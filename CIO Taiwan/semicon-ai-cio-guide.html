@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>AI 已經不是試驗：CIO 接下來真正要管的 7 件事</title>
+<style>
+:root{
+  --ink:#172033;--muted:#657087;--line:#dfe5ee;--paper:#f6f8fb;--card:#fff;
+  --blue:#3767e8;--blue2:#e9efff;--violet:#7156d9;--violet2:#f0ecff;
+  --green:#178b6a;--green2:#e6f7f1;--orange:#d47b15;--orange2:#fff2df;
+  --red:#cc4b4b;--red2:#ffebeb;--dark:#111827;
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","PingFang TC",Arial,sans-serif;line-height:1.65}
+a{color:inherit}.wrap{max-width:1120px;margin:auto;padding:0 24px}.hero{background:linear-gradient(135deg,#0f172a 0%,#1b2d63 54%,#4c3ea2 100%);color:#fff;padding:76px 0 62px;overflow:hidden;position:relative}.hero:before,.hero:after{content:"";position:absolute;border-radius:999px;filter:blur(2px);opacity:.18}.hero:before{width:430px;height:430px;background:#6ea8ff;right:-120px;top:-150px}.hero:after{width:260px;height:260px;background:#b898ff;left:-90px;bottom:-130px}.eyebrow{font-size:14px;letter-spacing:.14em;font-weight:800;opacity:.78}.hero h1{font-size:clamp(36px,6vw,68px);line-height:1.08;margin:14px 0 18px;max-width:900px}.hero p{font-size:clamp(18px,2.3vw,25px);max-width:820px;margin:0;opacity:.9}.chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}.chip{padding:8px 12px;border:1px solid rgba(255,255,255,.25);border-radius:999px;background:rgba(255,255,255,.08);font-weight:700;font-size:14px}.section{padding:64px 0}.section h2{font-size:clamp(28px,4vw,44px);line-height:1.2;margin:0 0 14px}.lead{font-size:20px;color:var(--muted);max-width:850px;margin:0 0 28px}.bigidea{background:#fff;border:1px solid var(--line);border-radius:24px;padding:32px;display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center}.bigidea strong{font-size:clamp(28px,4vw,48px);line-height:1.18}.arrowflow{display:flex;align-items:center;justify-content:center;gap:9px;flex-wrap:wrap}.node{padding:14px 16px;border-radius:16px;background:var(--blue2);border:1px solid #cdd8ff;font-weight:800;text-align:center;min-width:115px}.node.p{background:var(--violet2);border-color:#d8ceff}.arr{font-size:27px;color:#8b96a9;font-weight:800}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.stat{background:#fff;border:1px solid var(--line);border-radius:22px;padding:24px;min-height:190px}.stat .emoji{font-size:42px}.stat .num{font-size:42px;font-weight:900;line-height:1.1;margin:10px 0 4px}.stat .lab{font-weight:800}.stat p{color:var(--muted);margin:8px 0 0}.band{background:#101827;color:#fff}.band .lead{color:#bfc8d8}.budget{display:grid;grid-template-columns:1fr 130px 1fr;gap:20px;align-items:center}.bucket{border-radius:22px;padding:26px;background:#fff;color:var(--ink)}.bucket h3{margin:0 0 16px;font-size:24px}.money{display:flex;gap:10px;align-items:center;padding:12px 0;border-bottom:1px dashed var(--line)}.money:last-child{border:0}.money .ico{font-size:30px;width:42px}.shift{text-align:center;font-size:48px}.caption{font-size:14px;color:var(--muted)}.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:26px}.card h3{font-size:24px;margin:4px 0 10px}.card p{color:var(--muted);margin:0}.iconbubble{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;font-size:30px;background:var(--blue2)}.iconbubble.v{background:var(--violet2)}.iconbubble.g{background:var(--green2)}.iconbubble.o{background:var(--orange2)}.meter{height:16px;background:#edf0f5;border-radius:999px;overflow:hidden;margin:15px 0 8px}.fill{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--blue),var(--violet))}.compare{display:grid;grid-template-columns:1fr 72px 1fr;gap:16px;align-items:stretch}.side{background:#fff;border:1px solid var(--line);border-radius:22px;padding:26px}.side h3{margin:0 0 14px}.vs{display:grid;place-items:center;font-size:28px;font-weight:900;color:#8a94a7}.tag{display:inline-block;font-size:13px;font-weight:800;border-radius:999px;padding:6px 10px;margin-bottom:10px;background:var(--green2);color:var(--green)}.tag.warn{background:var(--orange2);color:var(--orange)}.agent{display:grid;grid-template-columns:1fr 110px 1fr;gap:18px;align-items:center}.agent .person{background:#fff;border:1px solid var(--line);border-radius:22px;padding:26px;text-align:center}.agent .person .face{font-size:62px}.bolt{text-align:center;font-size:60px}.supply{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;align-items:center;margin-top:28px}.supply .step{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px 10px;text-align:center;font-weight:800;min-height:120px;display:flex;flex-direction:column;justify-content:center}.supply .step span{font-size:34px;display:block}.riskmap{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.risk{background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px}.risk b{display:block;margin-top:10px}.risk small{color:var(--muted)}.timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:26px}.year{padding:25px;border-top:6px solid var(--blue);background:#fff}.year:nth-child(2){border-color:var(--violet)}.year:nth-child(3){border-color:var(--green)}.year h3{font-size:30px;margin:0}.year strong{display:block;font-size:21px;margin:10px 0}.check{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.q{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px 22px;display:flex;gap:14px;align-items:flex-start}.q .n{min-width:36px;height:36px;border-radius:12px;background:var(--blue2);color:var(--blue);display:grid;place-items:center;font-weight:900}.q b{display:block;font-size:18px}.q span{color:var(--muted);font-size:15px}.takeaway{background:linear-gradient(135deg,#eef3ff,#f3eeff);border:1px solid #d8ddf5;border-radius:26px;padding:34px}.takeaway h3{font-size:clamp(26px,4vw,40px);margin:0 0 18px}.footer{padding:30px 0 50px;color:#7b8494;font-size:13px}.src{border-top:1px solid var(--line);padding-top:18px}
+@media(max-width:800px){.bigidea,.budget,.compare,.agent{grid-template-columns:1fr}.shift,.vs,.bolt{transform:rotate(90deg)}.grid3,.cards,.riskmap,.check,.timeline{grid-template-columns:1fr}.supply{grid-template-columns:repeat(2,1fr)}.hero{padding:54px 0 44px}.section{padding:46px 0}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">SEMICON TAIWAN 2026 × CIO VIEW</div>
+    <h1>AI 已經不是試驗。<br>CIO 接下來真正要管的是「規模化」。</h1>
+    <p>把半導體市場論壇翻譯成企業資訊長看得懂的版本：從 AI 採用、預算、成本、模型策略，一路看到基礎建設與供應鏈風險。</p>
+    <div class="chips"><span class="chip">🧠 AI Adoption</span><span class="chip">💰 Budget</span><span class="chip">📊 AI FinOps</span><span class="chip">🤖 Agentic AI</span><span class="chip">🏗️ Infrastructure</span><span class="chip">🌏 Geopolitics</span></div>
+  </div>
+</header>
+
+<section class="section">
+  <div class="wrap">
+    <h2>先記住一句話</h2>
+    <p class="lead">企業 AI 已經開始進入真實工作流程；接下來的難題，不是「能不能用」，而是「怎麼大量使用，又不讓成本、風險與基礎建設失控」。</p>
+    <div class="bigidea">
+      <strong>AI 從「工具」變成<br><span style="color:var(--blue)">企業營運的一層</span></strong>
+      <div class="arrowflow"><div class="node">🧪 試用</div><div class="arr">→</div><div class="node">👥 部門採用</div><div class="arr">→</div><div class="node p">🏢 全企業</div><div class="arr">→</div><div class="node p">⚙️ Agent 工作流</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:10px">
+  <div class="wrap">
+    <h2>① AI 採用：已經不是少數人的玩具</h2>
+    <p class="lead">論壇中的企業 IT 調查顯示，AI 的商業合作與實際消耗都在快速增加，而且大型企業走得更快。</p>
+    <div class="grid3">
+      <div class="stat"><div class="emoji">🏢</div><div class="num">~60%</div><div class="lab">企業已有 AI 商業合作</div><p>約由前一年的 50% 上升。</p></div>
+      <div class="stat"><div class="emoji">🏙️</div><div class="num">~70%</div><div class="lab">Fortune 100</div><p>大型企業的 AI 商業採用更高。</p></div>
+      <div class="stat"><div class="emoji">📈</div><div class="num">70%+</div><div class="lab">AI 用量月增</div><p>企業正把更多工作搬到生成式／Agentic AI。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section band">
+  <div class="wrap">
+    <h2>② AI 預算正在「吃掉」其他 IT 預算</h2>
+    <p class="lead">約一半企業的 AI 支出已超過年初預算。錢不是憑空出現，而是從其他項目被重新分配。</p>
+    <div class="budget">
+      <div class="bucket"><h3>被延後／縮減</h3><div class="money"><span class="ico">🧑‍💼</span><b>外部顧問、承包商</b></div><div class="money"><span class="ico">💻</span><b>PC 更新</b></div><div class="money"><span class="ico">📶</span><b>Wi‑Fi／部分硬體更新</b></div></div>
+      <div class="shift">➡️</div>
+      <div class="bucket"><h3>預算流向</h3><div class="money"><span class="ico">🧠</span><b>AI 模型與 Copilot</b></div><div class="money"><span class="ico">🤖</span><b>Agentic 工作負載</b></div><div class="money"><span class="ico">☁️</span><b>Cloud / AI Infrastructure</b></div></div>
+    </div>
+    <p class="caption" style="color:#aeb8c9;margin-top:14px">CIO 問題：AI 是新增預算，還是正在改寫整張 IT 預算表？</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <h2>③ 下一個關鍵字：AI FinOps</h2>
+    <p class="lead">當 AI 用量擴大，CIO 不只要算授權數，而要知道：誰在用、用什麼模型、跑多少 token／工作量、帶來什麼價值。</p>
+    <div class="cards">
+      <div class="card"><div class="iconbubble">🧾</div><h3>今天：只有約 17%</h3><p>企業已追蹤 AI 消耗，並設定硬上限。</p><div class="meter"><div class="fill" style="width:17%"></div></div></div>
+      <div class="card"><div class="iconbubble v">🚦</div><h3>年底目標：約 40%</h3><p>更多企業計畫開始限制用量、分級帳號與控制 Agent 工作負載。</p><div class="meter"><div class="fill" style="width:40%"></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:#eef2f8">
+  <div class="wrap">
+    <h2>④ 不要押一個模型：多模型會成為企業常態</h2>
+    <p class="lead">論壇調查顯示，多數企業不是 winner-takes-all，而是同時使用 OpenAI、Anthropic、Copilot 等不同供應商。</p>
+    <div class="compare">
+      <div class="side"><span class="tag">建議思維</span><h3>🧩 Multi-model</h3><p>依工作選模型：能力、成本、資料敏感度、部署位置、速度各自不同。</p></div>
+      <div class="vs">↔</div>
+      <div class="side"><span class="tag warn">避免</span><h3>🔒 單一模型綁定</h3><p>一旦價格、政策、效能或資料治理條件改變，切換成本會很高。</p></div>
+    </div>
+    <div class="takeaway" style="margin-top:18px"><b>🔓 開源模型也是議價工具：</b>調查中，若效能能保證，正式環境接近 70% 的受訪者願意把部分工作負載從專有模型轉到 open source。</div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <h2>⑤ Agentic AI：創新速度 vs. 成本控制，會直接衝突</h2>
+    <p class="lead">工程團隊想讓 AI 做更多事；管理者卻可能為了預算，限制 Agent 執行範圍。這會變成 CIO 新的治理矛盾。</p>
+    <div class="agent">
+      <div class="person"><div class="face">👩‍💻</div><h3>工程／業務團隊</h3><p>「讓 Agent 多做一點！」<br>更多自動化、更長任務、更深推理</p></div>
+      <div class="bolt">⚡</div>
+      <div class="person"><div class="face">👨‍💼</div><h3>CIO／財務治理</h3><p>「成本不能無限長！」<br>限制工作量、帳號層級、任務範圍</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:#f4f0ff">
+  <div class="wrap">
+    <h2>⑥ AI 不只是一套軟體，它後面是一整條實體基礎建設</h2>
+    <p class="lead">當企業把更多工作放上 AI，需求會一路往下傳到資料中心、算力、記憶體與半導體製造。對 CIO 而言，這代表「供應能力」也會成為 IT 風險。</p>
+    <div class="supply">
+      <div class="step"><span>👥</span>更多使用者</div><div class="step"><span>🤖</span>更多 Agent</div><div class="step"><span>☁️</span>更多雲端運算</div><div class="step"><span>🏭</span>更多資料中心</div><div class="step"><span>🧠</span>GPU＋Memory</div><div class="step"><span>⚡</span>電力＋供應鏈</div>
+    </div>
+    <div class="takeaway" style="margin-top:20px"><b>🧩 論壇調查：</b>在採購限制中，Memory 被 24% 受訪者列為最大限制；整體硬體價格也在快速上升。</div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <h2>⑦ 地緣政治，已經是 CIO 的技術架構條件</h2>
+    <p class="lead">先進 AI 晶片、設備、HBM 與先進封裝正受到出口管制與國家政策影響。這不只是半導體公司的問題，也會影響企業採購、雲端區域、供應鏈與備援策略。</p>
+    <div class="riskmap">
+      <div class="risk"><div style="font-size:36px">🇺🇸</div><b>出口管制</b><small>先進 GPU、製造設備與相關技術</small></div>
+      <div class="risk"><div style="font-size:36px">🌐</div><b>盟友協調</b><small>美、日、荷、韓、台政策協作</small></div>
+      <div class="risk"><div style="font-size:36px">🇨🇳</div><b>自主化</b><small>中國加速本土 AI 與半導體替代</small></div>
+      <div class="risk"><div style="font-size:36px">🚚</div><b>供應鏈變動</b><small>採購來源、交期、價格與合規都可能變</small></div>
+    </div>
+  </div>
+</section>
+
+<section class="section band">
+  <div class="wrap">
+    <h2>把 3 年的 CIO 問題放在一起看</h2>
+    <div class="timeline">
+      <div class="year" style="color:var(--ink)"><h3>2024–25</h3><strong>「我們能不能用 AI？」</strong><span>PoC、模型能力、員工試用</span></div>
+      <div class="year" style="color:var(--ink)"><h3>2026</h3><strong>「哪些工作真的該用？」</strong><span>ROI、流程導入、多模型</span></div>
+      <div class="year" style="color:var(--ink)"><h3>2027</h3><strong>「怎麼大規模地管住？」</strong><span>成本、Agent、治理、韌性、供應風險</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <h2>CIO 現在最值得問的 6 個問題</h2>
+    <p class="lead">如果只能把這場論壇帶回公司開一次會，先問這六題。</p>
+    <div class="check">
+      <div class="q"><div class="n">1</div><div><b>哪些 AI workload 已經從 PoC 進入 production？</b><span>不要只看帳號數，要看真正工作流程。</span></div></div>
+      <div class="q"><div class="n">2</div><div><b>我們知道 AI 每月到底花多少嗎？</b><span>按人、部門、模型、任務與價值拆成本。</span></div></div>
+      <div class="q"><div class="n">3</div><div><b>AI 正在排擠哪些既有 IT 預算？</b><span>硬體更新、顧問、軟體是否被延後？</span></div></div>
+      <div class="q"><div class="n">4</div><div><b>我們有 Multi-model 策略嗎？</b><span>避免單一供應商綁定並保留切換能力。</span></div></div>
+      <div class="q"><div class="n">5</div><div><b>Agent 可以做到哪裡、不能做到哪裡？</b><span>權限、成本、資料、稽核與人類覆核要先定義。</span></div></div>
+      <div class="q"><div class="n">6</div><div><b>AI 基礎建設有沒有供應風險？</b><span>雲端、GPU、Memory、區域與政策變化都要納入韌性。</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <div class="takeaway">
+      <h3>最後帶走：CIO 的角色正在改變</h3>
+      <div class="arrowflow" style="justify-content:flex-start"><div class="node">🖥️ 管 IT</div><div class="arr">→</div><div class="node">🧠 導 AI</div><div class="arr">→</div><div class="node p">💰 管成本</div><div class="arr">→</div><div class="node p">🛡️ 管風險</div><div class="arr">→</div><div class="node p">⚙️ 重設營運</div></div>
+      <p style="font-size:19px;margin:20px 0 0">AI 規模化之後，CIO 不再只是「導入一個新工具」，而是在重新設計企業的工作方式、成本結構、技術架構與營運韌性。</p>
+    </div>
+  </div>
+</section>
+
+<footer class="footer"><div class="wrap src">資料基礎：2026/9/1 SEMICON Taiwan 市場趨勢論壇逐字稿；內容以 CIO / Enterprise IT 視角重新整理。主要涵蓋 Gregory Allen、Clark Tseng、Rolf Bulk 場次。數字均依逐字稿所述呈現，未延伸為股票或投資建議。</div></footer>
+</body>
+</html>

@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>為什麼 AI 需要矽光子？CIO 看懂下一代 AI 基礎建設</title>
+<meta name="description" content="用大量圖示解釋 AI、GPU、互連、矽光子、CPO/NPO 與 CIO 決策之間的關係。內容整理自 SEMICON Taiwan 2026 矽光子國際論壇 Lightmatter 與 Marvell 演講。" />
+<style>
+:root{
+  --ink:#172033;--muted:#657087;--line:#dfe5ee;--paper:#f5f7fb;--card:#fff;
+  --blue:#3767e8;--blue2:#eaf0ff;--violet:#7557d8;--violet2:#f1edff;
+  --cyan:#168ca6;--cyan2:#e7f8fb;--green:#168568;--green2:#e7f6f1;
+  --orange:#d37b17;--orange2:#fff2df;--red:#c94a58;--red2:#ffebee;--dark:#101827;
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","PingFang TC",Arial,sans-serif;line-height:1.65}.wrap{max-width:1120px;margin:auto;padding:0 24px}.hero{background:radial-gradient(circle at 90% 0%,#5438a7 0,transparent 34%),linear-gradient(135deg,#0c1427 0%,#172e69 54%,#123f50 100%);color:#fff;padding:78px 0 64px;overflow:hidden}.eyebrow{font-size:14px;letter-spacing:.14em;font-weight:850;opacity:.75}.hero h1{font-size:clamp(36px,6vw,70px);line-height:1.08;margin:14px 0 18px;max-width:980px}.hero p{font-size:clamp(18px,2.25vw,24px);max-width:840px;margin:0;opacity:.9}.chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}.chip{padding:8px 13px;border:1px solid rgba(255,255,255,.25);border-radius:999px;background:rgba(255,255,255,.08);font-size:14px;font-weight:800}.section{padding:64px 0}.section h2{font-size:clamp(28px,4vw,44px);line-height:1.2;margin:0 0 12px}.lead{font-size:20px;color:var(--muted);max-width:880px;margin:0 0 28px}.big{background:#fff;border:1px solid var(--line);border-radius:26px;padding:32px}.flow{display:grid;grid-template-columns:repeat(7,1fr);gap:10px;align-items:center}.node{background:var(--blue2);border:1px solid #cfdaff;border-radius:18px;padding:18px 12px;text-align:center;font-weight:850;min-height:132px;display:flex;flex-direction:column;justify-content:center}.node span{font-size:38px;display:block;margin-bottom:6px}.node.v{background:var(--violet2);border-color:#d9ceff}.node.c{background:var(--cyan2);border-color:#c8eaf1}.node.o{background:var(--orange2);border-color:#f2d6ad}.arr{text-align:center;font-size:28px;color:#8d98aa;font-weight:900}.analogy{display:grid;grid-template-columns:1fr 90px 1fr;gap:18px;align-items:center}.box{background:#fff;border:1px solid var(--line);border-radius:24px;padding:28px}.box h3{font-size:26px;margin:0 0 12px}.road{background:#eef2f7;border-radius:18px;padding:18px}.lane{display:flex;gap:8px;align-items:center;justify-content:center;min-height:74px}.car{font-size:28px}.fiber{display:grid;place-items:center;min-height:74px;font-size:36px;background:linear-gradient(90deg,#edf2ff,#eefaff);border-radius:14px}.vs{font-size:42px;text-align:center;color:#8d98aa}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.stat{background:#fff;border:1px solid var(--line);border-radius:22px;padding:24px;min-height:205px}.stat .ico{font-size:44px}.stat .num{font-size:42px;font-weight:950;line-height:1.1;margin:10px 0 4px}.stat b{display:block;font-size:18px}.stat p{color:var(--muted);margin:8px 0 0}.dark{background:var(--dark);color:#fff}.dark .lead{color:#b9c4d5}.layers{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.layer{border-radius:22px;padding:24px;background:#fff;color:var(--ink);text-align:center}.layer .ico{font-size:50px}.layer h3{font-size:22px;margin:7px 0}.layer p{margin:0;color:var(--muted)}.ladder{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;align-items:end;margin-top:28px}.stage{background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px;text-align:center}.stage:nth-child(1){min-height:190px}.stage:nth-child(2){min-height:220px}.stage:nth-child(3){min-height:250px}.stage:nth-child(4){min-height:280px;background:linear-gradient(180deg,#f2efff,#fff)}.stage .ico{font-size:44px}.stage h3{font-size:22px;margin:6px 0}.stage p{color:var(--muted);margin:0}.timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:25px}.year{padding:25px;background:#fff;border-top:6px solid var(--blue)}.year:nth-child(2){border-color:var(--violet)}.year:nth-child(3){border-color:var(--cyan)}.year h3{font-size:30px;margin:0}.year b{display:block;font-size:20px;margin:8px 0}.year p{color:var(--muted);margin:0}.cioGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.decision{background:#fff;border:1px solid var(--line);border-radius:22px;padding:26px}.decision .icon{width:56px;height:56px;border-radius:17px;display:grid;place-items:center;font-size:30px;background:var(--blue2)}.decision:nth-child(2) .icon{background:var(--violet2)}.decision:nth-child(3) .icon{background:var(--green2)}.decision:nth-child(4) .icon{background:var(--orange2)}.decision h3{font-size:24px;margin:11px 0 8px}.decision p{color:var(--muted);margin:0}.question{margin-top:12px;padding:14px 16px;border-radius:14px;background:#f5f7fb;font-weight:800}.industry{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:28px}.chain{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px 10px;text-align:center;min-height:135px;display:flex;flex-direction:column;justify-content:center;font-weight:850}.chain span{font-size:36px}.signal{display:grid;grid-template-columns:1fr 1fr;gap:18px}.signalbox{border-radius:24px;padding:28px;background:#fff;border:1px solid var(--line)}.signalbox h3{font-size:26px;margin:0 0 16px}.row{display:flex;gap:12px;padding:11px 0;border-bottom:1px dashed var(--line);align-items:flex-start}.row:last-child{border:0}.row .r{font-size:26px;width:36px}.note{background:linear-gradient(135deg,#edf3ff,#f2efff);border:1px solid #d7def3;border-radius:26px;padding:34px}.note h3{font-size:clamp(26px,4vw,40px);margin:0 0 16px}.take{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}.take div{background:rgba(255,255,255,.72);border:1px solid rgba(200,210,235,.8);border-radius:18px;padding:20px}.take b{font-size:18px}.footer{padding:30px 0 50px;color:#7a8495;font-size:13px}.source{border-top:1px solid var(--line);padding-top:18px}.badge{display:inline-block;padding:5px 9px;border-radius:999px;background:var(--green2);color:var(--green);font-size:12px;font-weight:900;margin-bottom:10px}.warn{background:var(--orange2);color:#a85f0c}.mini{font-size:14px;color:var(--muted)}
+@media(max-width:850px){.flow{grid-template-columns:1fr}.arr{transform:rotate(90deg)}.analogy,.signal{grid-template-columns:1fr}.vs{transform:rotate(90deg)}.grid3,.layers,.ladder,.timeline,.cioGrid,.take{grid-template-columns:1fr}.stage:nth-child(n){min-height:auto}.industry{grid-template-columns:repeat(2,1fr)}.hero{padding:54px 0 46px}.section{padding:48px 0}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">SEMICON TAIWAN 2026 × CIO VIEW</div>
+    <h1>AI 不只是需要更強的 GPU。<br>它還需要一條更快的「資料高速公路」。</h1>
+    <p>用最少的工程名詞，看懂為什麼矽光子、NPO、CPO、雷射、封裝與液冷，正在成為下一代 AI 基礎建設的核心。</p>
+    <div class="chips"><span class="chip">🧠 AI</span><span class="chip">🖥️ GPU / XPU</span><span class="chip">🚦 Interconnect</span><span class="chip">✨ Silicon Photonics</span><span class="chip">⚡ Power</span><span class="chip">💧 Cooling</span></div>
+  </div>
+</header>
+
+<section class="section">
+  <div class="wrap">
+    <h2>先記住這條因果鏈</h2>
+    <p class="lead">AI 模型越大，企業就需要越多 GPU／XPU；但 GPU 一多，真正困難的事情開始變成「這些晶片怎麼高速交換資料」。</p>
+    <div class="big">
+      <div class="flow">
+        <div class="node"><span>🧠</span>模型更大</div><div class="arr">→</div>
+        <div class="node"><span>🖥️</span>GPU 更多</div><div class="arr">→</div>
+        <div class="node v"><span>🚗🚗</span>資料流量暴增</div><div class="arr">→</div>
+        <div class="node c"><span>✨</span>光走近晶片</div>
+      </div>
+      <p class="mini" style="margin:20px 0 0;text-align:center">一句話：AI 基礎建設的下一個瓶頸，不只是「算不算得快」，而是「晶片彼此能不能溝通得夠快」。</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:10px">
+  <div class="wrap">
+    <h2>把 GPU 想成一座城市</h2>
+    <p class="lead">每一顆 GPU 都像一棟超大型工廠。工廠本身再強，如果貨物卡在路上，整座城市還是跑不快。</p>
+    <div class="analogy">
+      <div class="box">
+        <span class="badge warn">傳統方式</span>
+        <h3>🚗 銅線＝一般道路</h3>
+        <div class="road"><div class="lane"><span class="car">🚙</span><span class="car">🚕</span><span class="car">🚗</span><span class="car">🚚</span><span class="car">🚕</span></div></div>
+        <p>距離越長、速度越高，功耗與訊號完整性越難處理。銅線不會立刻消失，但它會逐漸碰到密度與距離限制。</p>
+      </div>
+      <div class="vs">→</div>
+      <div class="box">
+        <span class="badge">下一階段</span>
+        <h3>✨ 光互連＝高速軌道</h3>
+        <div class="fiber">🌈━━━━━━━✨</div>
+        <p>光纖可以在更遠距離、更高頻寬下傳送大量資料。關鍵趨勢是：光學元件正一步步往 GPU／交換器晶片旁邊靠近。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section dark">
+  <div class="wrap">
+    <h2>為什麼現在突然變重要？</h2>
+    <p class="lead">因為 AI 資料中心的規模已經從「一台伺服器」升級成「成千上萬甚至百萬顆 XPU 一起工作」。網路不再只是配角。</p>
+    <div class="grid3">
+      <div class="stat"><div class="ico">🏭</div><div class="num">1 → 1M</div><b>AI Cluster 持續放大</b><p>Marvell 以 million-XPU 等級描述未來大型 AI 叢集，互連數量可達千萬級。</p></div>
+      <div class="stat"><div class="ico">🔗</div><div class="num">10M</div><b>互連可能比晶片還多</b><p>GPU 越多，交換器、線路、光模組與封裝的複雜度會成倍增加。</p></div>
+      <div class="stat"><div class="ico">📐</div><div class="num">Tb/s/mm</div><b>「密度」成為關鍵</b><p>不只問總頻寬，而要問每毫米、每平方毫米能塞進多少高速資料通道。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <h2>AI 網路其實有 4 個距離層級</h2>
+    <p class="lead">你不需要背術語，只要知道：距離越遠、資料越多，光的角色越重要。</p>
+    <div class="layers">
+      <div class="layer"><div class="ico">🧩</div><h3>晶片內／板上</h3><p>Scale-in<br>最短距離</p></div>
+      <div class="layer"><div class="ico">🖥️</div><h3>伺服器／機櫃</h3><p>Scale-up<br>讓 GPU 像一台大電腦</p></div>
+      <div class="layer"><div class="ico">🏢</div><h3>機櫃到機櫃</h3><p>Scale-out<br>形成大型 AI Cluster</p></div>
+      <div class="layer"><div class="ico">🌐</div><h3>資料中心之間</h3><p>Scale-across<br>跨園區／跨城市</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:#edf1f7">
+  <div class="wrap">
+    <h2>光正在一步一步「走近 GPU」</h2>
+    <p class="lead">這是理解矽光子產業最重要的一張圖：未來不是光模組消失，而是光電轉換的位置越來越靠近運算晶片。</p>
+    <div class="ladder">
+      <div class="stage"><div class="ico">📦</div><h3>Pluggable</h3><p>光模組插在設備前端。成熟、好維修，但高速後電耗與面板空間壓力升高。</p></div>
+      <div class="stage"><div class="ico">📍</div><h3>NPO</h3><p>Near Package Optics。把光學引擎移到交換器／晶片封裝附近。</p></div>
+      <div class="stage"><div class="ico">🔬</div><h3>CPO</h3><p>Co-Packaged Optics。光學與交換晶片更緊密整合，目標降低功耗與距離。</p></div>
+      <div class="stage"><div class="ico">✨🧠</div><h3>Photonic Interposer</h3><p>光互連進一步走入封裝／中介層，朝更高密度的 Optical I/O 發展。</p></div>
+    </div>
+    <div class="timeline">
+      <div class="year"><h3>現在</h3><b>Pluggable 為主</b><p>大量 800G／1.6T 等高速光通訊演進。</p></div>
+      <div class="year"><h3>~2027</h3><b>NPO 加速</b><p>Lightmatter 講者給出的產業路線圖之一，屬論壇預期而非保證時程。</p></div>
+      <div class="year"><h3>~2028</h3><b>CPO 更靠近主流</b><p>同樣為論壇講者的 roadmap 判斷，實際量產節奏仍取決於標準與供應鏈。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <h2>為什麼 CPO 不只是「速度更快」？</h2>
+    <p class="lead">最大的商業理由之一其實是「電」。當資料中心裡有數十萬顆 GPU 時，每一個 bit 多耗一點電，都會放大成巨額成本與供電壓力。</p>
+    <div class="grid3">
+      <div class="stat"><div class="ico">🔌</div><div class="num">10–14</div><b>pJ/bit</b><p>Marvell 講者對傳統 pluggable 光連結功耗量級的描述。</p></div>
+      <div class="stat"><div class="ico">⚡</div><div class="num">2–5</div><b>pJ/bit</b><p>講者描述 CPO 潛在可降到更低量級；實際系統仍取決於 SerDes 與整體架構。</p></div>
+      <div class="stat"><div class="ico">🏭</div><div class="num">TCO</div><b>從 GPU 擴大到整座機房</b><p>GPU＋Network＋Power＋Cooling＋Optics，才是 AI 基礎建設的完整成本。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section dark">
+  <div class="wrap">
+    <h2>CIO 到底要看懂什麼？</h2>
+    <p class="lead">你不需要選雷射或封裝製程，但必須知道：未來 AI 投資報酬率，不只由 GPU 規格決定。</p>
+    <div class="cioGrid">
+      <div class="decision"><div class="icon">🧮</div><h3>① 不要只問「買幾顆 GPU」</h3><p>GPU 如果彼此溝通太慢，昂貴算力會在等待資料。真正要看的是 GPU 利用率、網路拓樸與整體吞吐。</p><div class="question">CIO 問：每顆 GPU 實際產出多少 AI 工作量？</div></div>
+      <div class="decision"><div class="icon">💰</div><h3>② TCO 要重算</h3><p>AI 資料中心的成本不只 GPU，還包含高速網路、交換器、光模組、電力、液冷與資料中心空間。</p><div class="question">CIO 問：每個 token／推論／訓練任務，完整成本是多少？</div></div>
+      <div class="decision"><div class="icon">⚡</div><h3>③ 電力可能比 GPU 更先卡住</h3><p>當運算與網路規模同步放大，供電與散熱會直接限制可部署的 AI 容量。</p><div class="question">CIO 問：每瓦電可以換到多少 AI 產出？</div></div>
+      <div class="decision"><div class="icon">🛣️</div><h3>④ 架構要保留升級路徑</h3><p>今天可能仍以 pluggable 為主，但採購資料中心、網路與 AI Cluster 時，應理解 NPO／CPO／Optical I/O 的方向。</p><div class="question">CIO 問：現在的架構，兩三年後能不能平滑升級？</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <h2>從產業角度：價值正在從「一顆 GPU」向外擴散</h2>
+    <p class="lead">AI 擴產不再只拉動運算晶片，還同時拉動整條「讓 GPU 互相溝通」的供應鏈。</p>
+    <div class="industry">
+      <div class="chain"><span>🧠</span>GPU / XPU</div>
+      <div class="chain"><span>🔀</span>Switch / Networking</div>
+      <div class="chain"><span>✨</span>Silicon Photonics</div>
+      <div class="chain"><span>🔦</span>Laser</div>
+      <div class="chain"><span>🧩</span>Advanced Packaging</div>
+      <div class="chain"><span>🌈</span>Fiber / Connector</div>
+    </div>
+    <div class="industry" style="margin-top:10px;grid-template-columns:repeat(3,1fr)">
+      <div class="chain"><span>💧</span>Liquid Cooling</div>
+      <div class="chain"><span>⚡</span>Power Infrastructure</div>
+      <div class="chain"><span>🏢</span>Data Center Construction</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:#edf1f7">
+  <div class="wrap">
+    <h2>接下來產業要過的 4 道門</h2>
+    <p class="lead">技術好不代表明天就能大規模出貨。從論壇內容看，真正的量產關鍵是「技術＋封裝＋標準＋供應鏈」一起成熟。</p>
+    <div class="layers">
+      <div class="layer"><div class="ico">🧪</div><h3>技術驗證</h3><p>頻寬、功耗、可靠度</p></div>
+      <div class="layer"><div class="ico">🧩</div><h3>封裝整合</h3><p>光、電、雷射、散熱一起整合</p></div>
+      <div class="layer"><div class="ico">📏</div><h3>標準化</h3><p>OCP／OCI MSA 等生態系形成共同規格</p></div>
+      <div class="layer"><div class="ico">🏭</div><h3>大量製造</h3><p>良率、成本、維修、供應鏈規模化</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <h2>兩個容易誤解的地方</h2>
+    <div class="signal">
+      <div class="signalbox"><h3>❌ 誤解 1：銅線明天就沒了</h3><div class="row"><div class="r">🟠</div><div><b>不是。</b><br><span class="mini">Marvell 講者也明確表示 copper 會「很慢很慢地消退」。不同距離與成本條件下，銅與光會長期共存。</span></div></div><div class="row"><div class="r">✅</div><div><b>真正趨勢</b><br><span class="mini">高速、高密度、較長距離的互連，光會取得更多位置，而且越來越靠近晶片。</span></div></div></div>
+      <div class="signalbox"><h3>❌ 誤解 2：矽光子＝光纖用量只會暴增</h3><div class="row"><div class="r">🟠</div><div><b>不一定。</b><br><span class="mini">Lightmatter 的 BiDi 架構案例反而示範：同一條 fiber 同時做 Tx/Rx，可減少光纖與連接器數量。</span></div></div><div class="row"><div class="r">✅</div><div><b>真正趨勢</b><br><span class="mini">要看的是整體價值量：更高速的雷射、調變器、封裝、耦合、光引擎、交換與散熱，而不是單純數「線材根數」。</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section dark">
+  <div class="wrap">
+    <h2>Lightmatter 的例子：同樣 GPU，網路更好，AI 就能更快</h2>
+    <p class="lead">這是 CIO 最值得理解的一點：AI 性能不等於 GPU 數量。互連設計本身，就可能直接影響訓練與推論效率。</p>
+    <div class="grid3">
+      <div class="stat"><div class="ico">🏋️</div><div class="num">~3×</div><b>Training</b><p>論壇案例宣稱，在相同 GPU 數量下，更高頻寬的 photonic interconnect 可大幅縮短訓練時間。</p></div>
+      <div class="stat"><div class="ico">⏱️</div><div class="num">~3×</div><b>Time to First Token</b><p>長 context 推論時，互連頻寬也會影響使用者等待第一個 token 的時間。</p></div>
+      <div class="stat"><div class="ico">💬</div><div class="num">~2×</div><b>Tokens / sec / user</b><p>在 decode 階段，講者案例同樣顯示互連改善可提升單一使用者吞吐。</p></div>
+    </div>
+    <p class="mini" style="color:#aeb8c9;margin-top:14px">以上數字為 Lightmatter 論壇展示案例／公司主張，用來說明架構影響，並非所有 AI 工作負載都可直接套用。</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="note">
+      <h3>最後，只要記住這 3 句話</h3>
+      <div class="take">
+        <div><b>🧠 1. AI 的瓶頸正在外移</b><br><span class="mini">從「GPU 算力」外移到「互連、電力、散熱與資料中心規模」。</span></div>
+        <div><b>✨ 2. 矽光子是在解決「交通問題」</b><br><span class="mini">讓大量 GPU 能更快、更省電地交換資料，像一台巨型電腦。</span></div>
+        <div><b>🧑‍💼 3. CIO 要改問問題</b><br><span class="mini">不只問買多少 GPU，而要問：每瓦電、每顆 GPU、每一元投資，實際能產出多少 AI 工作量？</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap source">
+    <b>資料來源：</b>SEMICON Taiwan 2026 矽光子國際論壇逐字稿，重點整理自 Lightmatter「Foundational Photonic Building Blocks for Next Generation AI Infrastructure」與 Marvell「Enabling Data Center Hyper Connectivity in the AI Era」。<br>
+    <span>註：演講逐字稿含自動轉錄誤差；本頁以演講者明確表述的架構方向、案例與數據為基礎，對模糊數字不額外延伸。2027／2028 時程為講者 roadmap，不代表產業保證量產日期。</span>
+  </div>
+</footer>
+</body>
+</html>
